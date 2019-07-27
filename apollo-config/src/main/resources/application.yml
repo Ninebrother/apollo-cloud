@@ -1,0 +1,40 @@
+eureka:
+  instance:
+    #是否使用IP定义注册中心的地址
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8888/eureka
+
+spring:
+  application:
+    name: apollo-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/nineBrother/apollo-config
+          username: nineBrother
+          password: loveme521
+          #指定搜索根路径下的所有目录，若有多个路径使用逗号隔开
+          search-paths: /**
+    bus:
+      trace:
+        enabled: true
+      enabled: true
+  rabbitmq:
+    virtual-host: /
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
+
+server:
+  port: 8081

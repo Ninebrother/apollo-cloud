@@ -1,0 +1,29 @@
+eureka:
+  instance:
+    #是否使用IP定义注册中心的地址
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8888/eureka
+
+spring:
+  application:
+    name: order                     #指定了配置文件的应用名
+  cloud:
+    #加载配置中心  dev环境，通过service-id从注册中心获取服务地址，加载dev环境
+    config:
+#      uri: http://localhost:8001/        #Config server的uri
+#      profile: dev                       #指定的环境
+#      label: master
+      discovery:
+        service-id: apollo-config
+        enabled: true
+      profile: dev
+    bus:
+      trace:
+        enabled: true
+
+#management:
+#  endpoint:
+#    health:
+#      show-details: always
