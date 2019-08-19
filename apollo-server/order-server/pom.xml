@@ -10,24 +10,5 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<artifactId>order-server</artifactId>
-	
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin </artifactId>
-				<configuration>
-					<fork>true</fork>
-					<mainClass>com.sunm.apollo.order.OrderApplication</mainClass>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+
 </project>

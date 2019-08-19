@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("order")
 @RefreshScope
 public class OrderController {
-    @Value("${env}")
+//    @Value("${env}")
     private String env;
 
     @RequestMapping("env")
