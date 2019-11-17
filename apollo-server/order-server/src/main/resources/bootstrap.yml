@@ -25,8 +25,14 @@ server:
 #6、为了确保重试机制的正常运作,理论上（以实际情况为准）建议hystrix的超时时间为:(1 + MaxAutoRetries + MaxAutoRetriesNextServer) * ReadTimeout
 
 feign:
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
   hystrix:
     enabled: true
+
+
 
 ribbon:
   OkToRetryOnAllOperations: false #对所有操作请求都进行重试,默认false
