@@ -4,7 +4,7 @@ spring:
     name: apollo-eureka
 # 服务端口号
 server:
-  port: 8888
+  port: 8761
 
 #Eureka 相关配置
 eureka:

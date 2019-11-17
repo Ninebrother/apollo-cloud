@@ -18,6 +18,7 @@
 		<module>apollo-config</module>
 		<module>apollo-server</module>
 		<module>apollo-feign</module>
+		<module>apollo-common</module>
 	</modules>
 	<packaging>pom</packaging>
 	

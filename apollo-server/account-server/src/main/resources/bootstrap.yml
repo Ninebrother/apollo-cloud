@@ -4,7 +4,7 @@ eureka:
     prefer-ip-address: true
   client:
     service-url:
-      defaultZone: http://localhost:8888/eureka
+      defaultZone: http://localhost:8761/eureka
 
 spring:
   application:
@@ -39,3 +39,5 @@ mybatis-plus:
   mapper-locations: classpath:mappers/*.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+server:
+  port: 8088

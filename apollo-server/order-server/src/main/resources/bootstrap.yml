@@ -4,7 +4,7 @@ eureka:
     prefer-ip-address: true
   client:
     service-url:
-      defaultZone: http://localhost:8888/eureka
+      defaultZone: http://localhost:8761/eureka
 
 spring:
   application:
@@ -14,24 +14,36 @@ spring:
       url: jdbc:mysql://127.0.0.1:3306/pay?useUnicode=true&characterEncoding=utf-8&useSSL=false&zeroDateTimeBehavior=convertToNull
       username: root
       password: root
-  cloud:
-    #加载配置中心  dev环境，通过service-id从注册中心获取服务地址，加载dev环境
-    config:
-#      uri: http://localhost:8001/        #Config server的uri
-#      profile: dev                       #指定的环境
-#      label: master
-      discovery:
-        service-id: apollo-config
-        enabled: true
-      profile: dev
-    bus:
-      trace:
-        enabled: true
+server:
+  port: 8089
 
-#management:
-#  endpoint:
-#    health:
-#      show-details: always
+#1、如果hystrix.command.default.execution.timeout.enabled为true,则会有两个执行方法超时的配置,一个就是ribbon的ReadTimeout,一个就是熔断器hystrix的timeoutInMilliseconds, 此时谁的值小谁生效
+#2、如果hystrix.command.default.execution.timeout.enabled为false,则熔断器不进行超时熔断,而是根据ribbon的ReadTimeout抛出的异常而熔断,也就是取决于ribbon
+#3、ribbon的ConnectTimeout,配置的是请求服务的超时时间,除非服务找不到,或者网络原因,这个时间才会生效
+#4、ribbon还有MaxAutoRetries对当前实例的重试次数,MaxAutoRetriesNextServer对切换实例的重试次数, 如果ribbon的ReadTimeout超时,或者ConnectTimeout连接超时,会进行重试操作
+#5、由于ribbon的重试机制,通常熔断的超时时间需要配置的比ReadTimeout长,ReadTimeout比ConnectTimeout长,否则还未重试,就熔断了
+#6、为了确保重试机制的正常运作,理论上（以实际情况为准）建议hystrix的超时时间为:(1 + MaxAutoRetries + MaxAutoRetriesNextServer) * ReadTimeout
+
+feign:
+  hystrix:
+    enabled: true
+
+ribbon:
+  OkToRetryOnAllOperations: false #对所有操作请求都进行重试,默认false
+  ReadTimeout: 1000   #负载均衡超时时间，默认值5000
+  ConnectTimeout: 3000 #ribbon请求连接的超时时间，默认值2000
+  MaxAutoRetries: 0     #对当前实例的重试次数，默认0
+  MaxAutoRetriesNextServer: 1 #对切换实例的重试次数，默认1
+
+hystrix:
+  command:
+    default:  #default全局有效，service id指定应用有效
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000 #断路器超时时间，默认1000ms
 
 
 
@@ -39,3 +51,5 @@ mybatis-plus:
   mapper-locations: classpath:mappers/*.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+

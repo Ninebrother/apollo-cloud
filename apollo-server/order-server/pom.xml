@@ -11,4 +11,11 @@
 	
 	<artifactId>order-server</artifactId>
 
+	<dependencies>
+		<dependency>
+			<groupId>com.sunm</groupId>
+			<artifactId>account-feign</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
 </project>
