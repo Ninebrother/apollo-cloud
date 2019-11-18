@@ -26,6 +26,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <!--环境-->
+        <dev.eureka.url>http://localhost:8761/eureka</dev.eureka.url>
+        <test.eureka.url></test.eureka.url>
+        <prod.eureka.url></prod.eureka.url>
+
+        <dev.log.dir>./logs</dev.log.dir>
+        <test.log.dir></test.log.dir>
+        <prod.log.dir></prod.log.dir>
         <!--SpringCloud最新稳定版本-->
         <spring-cloud.version>Finchley.SR2</spring-cloud.version>
         <spring.version>5.0.10.RELEASE</spring.version>
@@ -35,7 +43,6 @@
         <mybatis-plus.version>3.1.2</mybatis-plus.version>
 
         <fastjson.version>1.2.56</fastjson.version>
-
         <springfox.version>2.9.2</springfox.version>
     </properties>
 
@@ -92,7 +99,41 @@
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>${springfox.version}</version>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
+
+    <!-- 环境打包 -->
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <eurekaurl>${dev.eureka.url}</eurekaurl>
+                <spring.profiles.active>dev</spring.profiles.active>
+                <log.dir>${dev.log.dir}</log.dir>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <eurekaurl>${test.eureka.url}</eurekaurl>
+                <spring.profiles.active>test</spring.profiles.active>
+                <log.dir>${test.log.dir}</log.dir>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <eurekaurl>${prod.eureka.url}</eurekaurl>
+                <spring.profiles.active>prod</spring.profiles.active>
+                <log.dir>${prod.log.dir}</log.dir>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+
+    </build>
 </project>

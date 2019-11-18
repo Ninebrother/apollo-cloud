@@ -1,6 +1,5 @@
 package com.apollo.common.config;
 
-import com.sun.xml.internal.org.jvnet.fastinfoset.sax.RestrictedAlphabetContentHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;

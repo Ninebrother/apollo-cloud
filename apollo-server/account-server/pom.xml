@@ -11,5 +11,7 @@
 
     <artifactId>account-server</artifactId>
 
-
+    <properties>
+        <start-class>com.sunm.apollo.account.AccountApplication</start-class>
+    </properties>
 </project>
