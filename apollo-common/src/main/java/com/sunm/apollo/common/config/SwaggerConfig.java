@@ -1,4 +1,4 @@
-package com.apollo.common.config;
+package com.sunm.apollo.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

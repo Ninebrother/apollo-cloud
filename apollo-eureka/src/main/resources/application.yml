@@ -2,18 +2,27 @@
 spring:
   application:
     name: apollo-eureka
+  security:
+    user:
+      name: admin
+      password: admin
 # 服务端口号
 server:
   port: 8761
 
 #Eureka 相关配置
 eureka:
+  instance:
+    hostname: localhost
   client:
     service-url:
-      defaultZone: http://localhost:${server.port}/eureka/
-    # 是否从其他的服务中心同步服务列表
+      #eureka客户端url格式
+      defaultZone: http://${name}:${password}@${hostname}:${server.port}/eureka/
+    # 表示是否从Eureka Server获取注册信息，默认为true。
+    #如果这是一个单点的 Eureka Server，不需要同步其他节点的数据，可以设为false
     fetch-registry: true
     # 是否把自己作为服务注册到其他服务注册中心
     register-with-eureka: false
+
 
     

@@ -1,4 +1,4 @@
-package com.apollo.common.config;
+package com.sunm.apollo.common.config;
 
 import feign.Feign;
 import feign.codec.Encoder;

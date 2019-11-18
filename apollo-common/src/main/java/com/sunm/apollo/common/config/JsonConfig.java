@@ -1,4 +1,4 @@
-package com.apollo.common.config;
+package com.sunm.apollo.common.config;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
