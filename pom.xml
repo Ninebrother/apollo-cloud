@@ -27,7 +27,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <!--环境-->
-        <dev.eureka.url>http://admin:admin@127.0.0.1:8761/eureka/</dev.eureka.url>
+        <dev.eureka.url>http://admin:admin@localhost:8761/eureka/</dev.eureka.url>
         <test.eureka.url></test.eureka.url>
         <prod.eureka.url></prod.eureka.url>
 
