@@ -14,16 +14,17 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Created by hujl on 2019/11/17.
+ * @AutoConfigureBefore 将会在FeignAutoConfiguration之前加载
  */
 @Configuration
 @ConditionalOnClass(Feign.class)
-@AutoConfigureBefore(FeignAutoConfiguration.class) //SpringBoot自动配置
+@AutoConfigureBefore(FeignAutoConfiguration.class)
 public class OkHttpConfig {
-    // 默认老外留给你彩蛋中文乱码，加上它就 OK
-    @Bean
-    public Encoder encoder() {
-        return new FormEncoder();
-    }
+    // 默认老外留给你彩蛋中文乱码，加上它就 OK，实测不加这个也不会乱码
+//    @Bean
+//    public Encoder encoder() {
+//        return new FormEncoder();
+//    }
 
     @Bean
     public okhttp3.OkHttpClient okHttpClient() {

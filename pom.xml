@@ -19,6 +19,7 @@
         <module>apollo-server</module>
         <module>apollo-feign</module>
         <module>apollo-common</module>
+        <module>apollo-gateway</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -37,15 +38,14 @@
         <!--SpringCloud最新稳定版本-->
         <spring-cloud.version>Finchley.SR2</spring-cloud.version>
         <spring.version>5.0.10.RELEASE</spring.version>
-        <spring-openfeign.version>2.0.2.RELEASE</spring-openfeign.version>
-        <feign-okhttp.version>10.2.0</feign-okhttp.version>
+
+        <feign-okhttp.version>10.1.0</feign-okhttp.version>
 
         <mybatis-plus.version>3.1.2</mybatis-plus.version>
 
         <fastjson.version>1.2.56</fastjson.version>
         <springfox.version>2.9.2</springfox.version>
     </properties>
-
 
     <dependencyManagement>
         <dependencies>
@@ -55,17 +55,6 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-                <exclusions>
-                    <exclusion>
-                        <groupId>com.google.code.gson</groupId>
-                        <artifactId>gson</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-openfeign</artifactId>
-                <version>${spring-openfeign.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -132,8 +121,17 @@
             </properties>
         </profile>
     </profiles>
-
     <build>
-
+        <resources>
+            <resource>
+                <!-- 扫描替换 -->
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>bootstrap.yml</include>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
 </project>
