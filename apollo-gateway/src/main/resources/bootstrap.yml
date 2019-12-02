@@ -1,0 +1,21 @@
+eureka:
+  instance:
+    #是否使用IP定义注册中心的地址
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: @eurekaurl@
+
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true #路有规则 http://Gateway_HOST:Gateway_PORT/大写的serviceId/**，其中微服务应用名默认大写访问
+          lower-case-service-id: true   #注册中心中服务名改成小写
+
+server:
+  port: 9099
