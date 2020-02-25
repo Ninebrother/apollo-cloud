@@ -45,6 +45,9 @@
 
         <fastjson.version>1.2.56</fastjson.version>
         <springfox.version>2.9.2</springfox.version>
+
+        <poi.version>3.9</poi.version>
+        <beanutils.version>1.9.4</beanutils.version>
     </properties>
 
     <dependencyManagement>
@@ -87,6 +90,21 @@
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>${springfox.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${beanutils.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
