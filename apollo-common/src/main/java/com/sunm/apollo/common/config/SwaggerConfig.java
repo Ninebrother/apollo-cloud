@@ -2,6 +2,7 @@ package com.sunm.apollo.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -42,7 +43,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .select()
 //                .apis(RequestHandlerSelectors.basePackage("com.sunm.apollo"))
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
                 .paths(PathSelectors.any())
                 .build();
     }

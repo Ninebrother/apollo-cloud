@@ -2,6 +2,7 @@ eureka:
   instance:
     #是否使用IP定义注册中心的地址
     prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
     status-page-url-path: /swagger-ui.html
   client:
     service-url:
@@ -14,9 +15,9 @@ spring:
     active: @spring.profiles.active@
   datasource:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://127.0.0.1:3306/pay?useUnicode=true&characterEncoding=utf-8&useSSL=false&zeroDateTimeBehavior=convertToNull
-      username: root
-      password: root
+      url: jdbc:mysql://10.10.113.76:3306/wema?useUnicode=true&characterEncoding=utf-8&useSSL=false&zeroDateTimeBehavior=convertToNull
+      username: wema
+      password: 6npCDZcGWky7fMSK
   cloud:
     #加载配置中心  dev环境，通过service-id从注册中心获取服务地址，加载dev环境
     config:
