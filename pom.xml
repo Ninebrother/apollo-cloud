@@ -43,7 +43,7 @@
 
         <mybatis-plus.version>3.1.2</mybatis-plus.version>
 
-        <fastjson.version>1.2.56</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <springfox.version>2.9.2</springfox.version>
 
         <poi.version>3.9</poi.version>
