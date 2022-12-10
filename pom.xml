@@ -37,7 +37,7 @@
         <prod.log.dir></prod.log.dir>
         <!--SpringCloud最新稳定版本-->
         <spring-cloud.version>Finchley.SR2</spring-cloud.version>
-        <spring.version>5.0.10.RELEASE</spring.version>
+        <spring.version>6.0.0</spring.version>
 
         <feign-okhttp.version>10.1.0</feign-okhttp.version>
 
